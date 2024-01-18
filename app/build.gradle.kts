@@ -54,6 +54,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     //logs network
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
