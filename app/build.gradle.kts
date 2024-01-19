@@ -55,6 +55,7 @@ dependencies {
     //logs network
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
