@@ -7,16 +7,114 @@
     tools:context=".ui.home.HomeFragment">
 
     <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+        android:id="@+id/tvCity"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="NEW ZEALAND"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        tools:text="19°"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCity"/>
+
+
+    <FrameLayout
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvCity">
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:textSize="20sp"
+            tools:text="thunderstorm with heavy drizzle"
+            android:layout_gravity="top|end"
+            android:gravity="bottom"
+            android:rotation="-90"/>
+    </FrameLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="76%"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvVisibility"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/tvHumidityDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Humedad"
+                app:layout_constraintStart_toStartOf="@id/tvHumidity"
+                app:layout_constraintEnd_toEndOf="@id/tvHumidity"
+                app:layout_constraintTop_toBottomOf="@id/tvHumidity"/>
+
+            <TextView
+                android:id="@+id/tvVisibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="10km%"
+                app:layout_constraintStart_toEndOf="@id/tvHumidity"
+                app:layout_constraintEnd_toStartOf="@id/tvWindSpeed"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/tvVisibilityDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visibilidad"
+                app:layout_constraintStart_toStartOf="@id/tvVisibility"
+                app:layout_constraintEnd_toEndOf="@id/tvVisibility"
+                app:layout_constraintTop_toBottomOf="@id/tvVisibility"/>
+
+            <TextView
+                android:id="@+id/tvWindSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="0.62 m/s"
+                app:layout_constraintStart_toEndOf="@id/tvVisibility"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/tvWindSpeedDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Viento"
+                app:layout_constraintStart_toStartOf="@id/tvWindSpeed"
+                app:layout_constraintEnd_toEndOf="@id/tvWindSpeed"
+                app:layout_constraintTop_toBottomOf="@id/tvWindSpeed"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
