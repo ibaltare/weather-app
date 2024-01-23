@@ -4,4 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_locations">Locations</string>
+    <string name="text_humidity">Humedad</string>
+    <string name="text_visibility">Visibilidad</string>
+    <string name="text_wind">Viento</string>
 </resources>

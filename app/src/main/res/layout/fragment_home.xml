@@ -2,18 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bgFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:background="@drawable/bg_weather">
 
     <TextView
         android:id="@+id/tvCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="@dimen/common_margin"
         android:layout_marginTop="40dp"
-        android:textSize="20sp"
+        android:textSize="22sp"
         tools:text="NEW ZEALAND"
+        style="@style/Theme.Weather.DetailLabels"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,11 +24,12 @@
         android:id="@+id/tvTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="@dimen/common_margin"
         android:layout_marginTop="40dp"
-        android:textSize="48sp"
+        android:textSize="100sp"
         android:textStyle="bold"
         tools:text="19°"
+        style="@style/Theme.Weather.DetailLabels"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCity"/>
 
@@ -33,36 +37,44 @@
     <FrameLayout
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="@dimen/common_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvCity">
         <TextView
             android:id="@+id/tvDescription"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
             android:textSize="20sp"
-            tools:text="thunderstorm with heavy drizzle"
+            style="@style/Theme.Weather.DetailLabels"
+            tools:text="thunderstorm with heavy drizzle smoke"
             android:layout_gravity="top|end"
-            android:gravity="bottom"
+            android:gravity="bottom|end"
             android:rotation="-90"/>
     </FrameLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/common_margin"
+        app:strokeColor="@color/white"
+        app:strokeWidth="@dimen/info_stroke_width"
+        app:cardCornerRadius="@dimen/info_corner_radius"
+        app:cardBackgroundColor="@color/alpha_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingVertical="@dimen/common_padding_default">
 
             <TextView
                 android:id="@+id/tvHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="76%"
+                android:textSize="@dimen/text_size_description_weather"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tvVisibility"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -70,7 +82,8 @@
                 android:id="@+id/tvHumidityDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Humedad"
+                android:text="@string/text_humidity"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="@id/tvHumidity"
                 app:layout_constraintEnd_toEndOf="@id/tvHumidity"
                 app:layout_constraintTop_toBottomOf="@id/tvHumidity"/>
@@ -80,6 +93,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="10km%"
+                android:textSize="@dimen/text_size_description_weather"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@id/tvHumidity"
                 app:layout_constraintEnd_toStartOf="@id/tvWindSpeed"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -87,7 +102,8 @@
                 android:id="@+id/tvVisibilityDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Visibilidad"
+                android:text="@string/text_visibility"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="@id/tvVisibility"
                 app:layout_constraintEnd_toEndOf="@id/tvVisibility"
                 app:layout_constraintTop_toBottomOf="@id/tvVisibility"/>
@@ -97,6 +113,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="0.62 m/s"
+                android:textSize="@dimen/text_size_description_weather"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@id/tvVisibility"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -104,17 +122,12 @@
                 android:id="@+id/tvWindSpeedDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Viento"
+                android:text="@string/text_wind"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="@id/tvWindSpeed"
                 app:layout_constraintEnd_toEndOf="@id/tvWindSpeed"
                 app:layout_constraintTop_toBottomOf="@id/tvWindSpeed"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </com.google.android.material.card.MaterialCardView>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

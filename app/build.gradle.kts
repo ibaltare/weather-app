@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -17,6 +19,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val weather_api_key: String = gradleLocalProperties(rootDir).getProperty("WEATHER_API_KEY")
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -24,6 +28,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "weather_api_key", "\"$weather_api_key\"")
+        }
+        debug {
+            buildConfigField("String", "weather_api_key", "\"$weather_api_key\"")
         }
     }
     compileOptions {
@@ -35,6 +43,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -57,7 +66,7 @@ dependencies {
     //logs network
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.android.gms:play-services-location:21.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

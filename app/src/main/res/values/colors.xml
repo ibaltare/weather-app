@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="biscay">#FF1e3f66</color>
+    <color name="kashmir_blue">#FF4b6a8b</color>
+    <color name="bali_Hai">#FF89a5b3</color>
+    <color name="saffron">#FFf2b036</color>
+    <color name="valencia">#FFd7493c</color>
+    <color name="alpha_gray">#80000000</color>
 </resources>
