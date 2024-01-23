@@ -20,6 +20,7 @@ class HomeViewModel(private val weatherRepository: WeatherRepository,
     val text: LiveData<String> = _text
 
     fun getWeather(){
+        println("************** weather ++++++++++")
         viewModelScope.launch {
             val location = locationRepository.getCurrentLocation()
             if (location != null){

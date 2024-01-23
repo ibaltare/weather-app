@@ -7,4 +7,11 @@
     <dimen name="common_margin">20dp</dimen>
     <dimen name="info_corner_radius">15dp</dimen>
     <dimen name="info_stroke_width">2dp</dimen>
+    <dimen name="common_padding_min">8dp</dimen>
+    <dimen name="city_margin_top">40dp</dimen>
+    <dimen name="city_text_size">22sp</dimen>
+    <dimen name="temperature_text_size">120sp</dimen>
+    <dimen name="weather_description_text_size">18sp</dimen>
+    <dimen name="weather_description_loyout_size">350dp</dimen>
+    <dimen name="weather_description_container_size">50dp</dimen>
 </resources>
