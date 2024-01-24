@@ -4,19 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/common_padding_default"
+    android:layout_marginTop="@dimen/common_padding_default"
     app:strokeColor="@color/white"
     app:strokeWidth="@dimen/info_stroke_width"
     app:cardCornerRadius="@dimen/info_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_padding_min">
 
         <TextView
             android:id="@+id/tvCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="New York"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -41,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="25°"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 

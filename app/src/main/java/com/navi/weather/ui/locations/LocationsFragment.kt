@@ -28,10 +28,10 @@ class LocationsFragment : Fragment() {
         _binding = FragmentLocationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
+        /*val textView: TextView = binding.textDashboard
         locationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
         return root
     }
 

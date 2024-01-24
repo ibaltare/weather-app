@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface RemoteService {
     @GET(Constants.WEATHER_DATA_PATH)
-    suspend fun getWeatherData(
+    suspend fun getWeatherForecast(
         @Query(Constants.LATITUDE_PARAM) lat: Double,
         @Query(Constants.LONGITUDE_PARAM) lon: Double,
         @Query(Constants.APP_ID_PARAM) appid: String,

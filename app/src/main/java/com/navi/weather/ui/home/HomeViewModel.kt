@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.navi.weather.domain.WeatherForecast
 import com.navi.weather.model.LocationRepository
 import com.navi.weather.model.WeatherRepository
 import kotlinx.coroutines.launch
@@ -14,22 +15,27 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private val weatherRepository: WeatherRepository,
                     private val locationRepository: LocationRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    private val _state = MutableLiveData(UiState())
+    val state: LiveData<UiState> get() {
+        if(_state.value?.weatherForecast == null){
+            refresh()
+        }
+        return _state
     }
-    val text: LiveData<String> = _text
 
-    fun getWeather(){
-        println("************** weather ++++++++++")
+    private fun refresh(){
         viewModelScope.launch {
             val location = locationRepository.getCurrentLocation()
             if (location != null){
-                val data = weatherRepository.getWeatherData(location)
-                Log.d("==WEATHER", data.toString())
+                _state.value = UiState(loading = true)
+                _state.value = UiState(weatherForecast = weatherRepository.getWeatherForecast(location))
             }
         }
-
     }
+    data class UiState(
+        val loading: Boolean = false,
+        val weatherForecast: WeatherForecast? = null
+    )
 }
 
 class HomeViewModelFactory(private val weatherRepository: WeatherRepository,
