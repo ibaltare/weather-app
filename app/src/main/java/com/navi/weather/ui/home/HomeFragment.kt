@@ -1,20 +1,18 @@
 package com.navi.weather.ui.home
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.navi.weather.databinding.FragmentHomeBinding
 import com.navi.weather.model.LocationRepository
 import com.navi.weather.model.WeatherRepository
 import com.navi.weather.ui.common.getResource
+import com.navi.weather.ui.common.visible
 
 class HomeFragment : Fragment() {
 
@@ -40,6 +38,7 @@ class HomeFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun setObservers() {
         homeViewModel.state.observe(viewLifecycleOwner){ state->
+            binding.progress.visible = state.loading
             state.weatherForecast?.let {
                 with(binding) {
                     tvCity.text = it.city
