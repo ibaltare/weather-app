@@ -10,10 +10,6 @@ import com.navi.weather.R
 
 class SearchFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SearchFragment()
-    }
-
     private lateinit var viewModel: SearchViewModel
 
     override fun onCreateView(
@@ -23,10 +19,5 @@ class SearchFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

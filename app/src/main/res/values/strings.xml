@@ -8,4 +8,5 @@
     <string name="text_visibility">Visibilidad</string>
     <string name="text_wind">Viento</string>
     <string name="title_weather">Clima</string>
+    <string name="btn_add_text">Agregar</string>
 </resources>

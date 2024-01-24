@@ -29,6 +29,8 @@ class HomeViewModel(private val weatherRepository: WeatherRepository,
             if (location != null){
                 _state.value = UiState(loading = true)
                 _state.value = UiState(weatherForecast = weatherRepository.getWeatherForecast(location))
+            }else {
+                println("==Error Location **************")
             }
         }
     }
