@@ -34,7 +34,7 @@ class LocationsFragment : Fragment() {
 
     private fun setListeners() {
         binding.efabAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_locations_to_searchFragment)
+            findNavController().navigate(R.id.action_locationsFragment_to_searchFragment)
         }
     }
 
