@@ -9,4 +9,6 @@
     <string name="text_wind">Viento</string>
     <string name="title_weather">Clima</string>
     <string name="btn_add_text">Agregar</string>
+    <string name="search_edit_text">Nombre de la ciudad</string>
+    <string name="text_separator">-</string>
 </resources>

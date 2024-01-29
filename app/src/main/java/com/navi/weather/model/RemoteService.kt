@@ -13,4 +13,11 @@ interface RemoteService {
         @Query(Constants.UNITS_PARAM) units: String,
         @Query(Constants.LANGUAGE_PARAM) lang: String,
     ): WeatherResult
+
+    @GET(Constants.GEOCODING_PATH)
+    suspend fun getCoordinates (
+        @Query(Constants.CITY_PARAM) city: String,
+        @Query(Constants.LIMIT_PARAM) limit: Int,
+        @Query(Constants.APP_ID_PARAM) appid: String
+    ): GeocodingResult
 }
