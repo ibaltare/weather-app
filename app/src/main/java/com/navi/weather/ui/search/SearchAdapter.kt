@@ -1,5 +1,6 @@
 package com.navi.weather.ui.search
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,7 +10,7 @@ import com.navi.weather.R
 import com.navi.weather.databinding.ItemListCityBinding
 import com.navi.weather.model.GeocodingElement
 
-class SearchAdapter : ListAdapter<GeocodingElement, SearchAdapter.GeocodingViewHolder>(TyreDiffCallback()) {
+class SearchAdapter(private val clickListener: (GeocodingElement) -> Unit) : ListAdapter<GeocodingElement, SearchAdapter.GeocodingViewHolder>(TyreDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): GeocodingViewHolder {
         val view =
@@ -19,7 +20,9 @@ class SearchAdapter : ListAdapter<GeocodingElement, SearchAdapter.GeocodingViewH
     }
 
     override fun onBindViewHolder(holder: GeocodingViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val element = getItem(position)
+        holder.bind(element)
+        holder.itemView.setOnClickListener { clickListener(element) }
     }
 
     class GeocodingViewHolder(private val binding: ItemListCityBinding):
