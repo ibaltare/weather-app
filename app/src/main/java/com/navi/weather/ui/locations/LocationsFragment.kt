@@ -46,6 +46,7 @@ class LocationsFragment : Fragment() {
         super.onResume()
         Log.d("==FRAGMENT","onResume")
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
