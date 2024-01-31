@@ -30,7 +30,6 @@ class SearchViewModel : ViewModel() {
 
     fun onElementClicked(element: GeocodingElement){
         _state.value = _state.value?.copy(navigateTo = element)
-        println("****** ${element.toString()}")
     }
 
     data class UiState(

@@ -42,41 +42,13 @@ class LocationsFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    /*******************************/
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Log.d("==FRAGMENT","onAttach")
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d("==FRAGMENT","onCreate")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("==FRAGMENT","onStart")
-    }
-
     override fun onResume() {
         super.onResume()
         Log.d("==FRAGMENT","onResume")
     }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("==FRAGMENT","onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("==FRAGMENT","onStop")
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

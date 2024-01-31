@@ -46,16 +46,6 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun setObservers() {
-        viewModel.state.observe(viewLifecycleOwner) { state ->
-            binding.progress.visible = state.loading
-            state.places?.let (adapter::submitList )
-            state.navigateTo?.let {
-                navigateTo(it)
-            }
-        }
-    }
-
     private fun setListeners() {
         binding.tiSearch.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -67,9 +57,19 @@ class SearchFragment : Fragment() {
         }
     }
 
+    private fun setObservers() {
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+            binding.progress.visible = state.loading
+            state.places?.let (adapter::submitList )
+            state.navigateTo?.let {
+                navigateTo(it)
+            }
+        }
+    }
+
     private fun navigateTo(element: GeocodingElement) {
-        //val action = MainFragmentDirections.actionMainToDetail(movie)
-        //findNavController().navigate(action)
+        val action = SearchFragmentDirections.actionSearchFragmentToLocationsFragment(element)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

@@ -28,17 +28,10 @@
             android:id="@+id/tvCountry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="New York, United States"
+            tools:text="New York, United States, US"
             app:layout_constraintStart_toStartOf="@id/tvCity"
             app:layout_constraintTop_toBottomOf="@id/tvCity"/>
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="mar, ene 23 15:05"
-            app:layout_constraintStart_toStartOf="@id/tvCity"
-            app:layout_constraintTop_toBottomOf="@id/tvCountry"/>
 
         <TextView
             android:id="@+id/tvTemperature"
