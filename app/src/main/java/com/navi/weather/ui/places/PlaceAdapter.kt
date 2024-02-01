@@ -10,7 +10,7 @@ import com.navi.weather.R
 import com.navi.weather.databinding.ItemListLocationBinding
 import com.navi.weather.domain.CityWeather
 
-class PlaceAdapter(private val clickListener: (CityWeather) -> Unit):
+class PlaceAdapter:
     ListAdapter<CityWeather, PlaceAdapter.PlaceViewHolder>(PlaceAdapter.PlaceDiffCallback()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceViewHolder {
@@ -23,7 +23,6 @@ class PlaceAdapter(private val clickListener: (CityWeather) -> Unit):
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
         val element = getItem(position)
         holder.bind(element)
-        holder.itemView.setOnClickListener { clickListener(element) }
     }
 
     class PlaceViewHolder(private val binding: ItemListLocationBinding):

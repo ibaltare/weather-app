@@ -7,7 +7,7 @@
     tools:context=".ui.places.PlacesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLocations"
+        android:id="@+id/rvPlaces"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_list_location"
