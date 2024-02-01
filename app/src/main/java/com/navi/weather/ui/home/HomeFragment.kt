@@ -34,7 +34,6 @@ class HomeFragment : Fragment() {
         setObservers()
     }
 
-
     @SuppressLint("SetTextI18n")
     private fun setObservers() {
         homeViewModel.state.observe(viewLifecycleOwner){ state->

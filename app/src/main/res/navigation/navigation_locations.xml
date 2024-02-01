@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/locationsFragment"
-        android:name="com.navi.weather.ui.locations.LocationsFragment"
+        android:name="com.navi.weather.ui.places.PlacesFragment"
         android:label="fragment_locations"
-        tools:layout="@layout/fragment_locations" >
+        tools:layout="@layout/fragment_places" >
         <action
             android:id="@+id/action_locationsFragment_to_searchFragment"
             app:destination="@id/searchFragment"

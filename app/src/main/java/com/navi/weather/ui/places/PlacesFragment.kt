@@ -1,33 +1,30 @@
-package com.navi.weather.ui.locations
+package com.navi.weather.ui.places
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.navi.weather.R
-import com.navi.weather.databinding.FragmentLocationsBinding
+import com.navi.weather.databinding.FragmentPlacesBinding
 
-class LocationsFragment : Fragment() {
+class PlacesFragment : Fragment() {
 
-    private var _binding: FragmentLocationsBinding? = null
+    private var _binding: FragmentPlacesBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: LocationsViewModel by viewModels()
-    private val args: LocationsFragmentArgs by navArgs()
+    private val viewModel: PlacesViewModel by viewModels()
+    private val args: PlacesFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLocationsBinding.inflate(inflater, container, false)
+        _binding = FragmentPlacesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
