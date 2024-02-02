@@ -70,6 +70,9 @@ class SearchFragment : Fragment() {
     private fun navigateTo(element: GeocodingElement) {
         val action = SearchFragmentDirections.actionSearchFragmentToLocationsFragment(element)
         findNavController().navigate(action)
+
+        findNavController().previousBackStackEntry?.savedStateHandle?.set("key", element)
+        findNavController().popBackStack()
     }
 
     override fun onDestroyView() {
