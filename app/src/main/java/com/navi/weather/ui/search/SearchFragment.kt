@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
@@ -13,7 +14,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.navi.weather.databinding.FragmentSearchBinding
 import com.navi.weather.model.GeocodingElement
+import com.navi.weather.ui.common.hideKeyboard
+import com.navi.weather.ui.common.showKeyboard
 import com.navi.weather.ui.common.visible
+import com.navi.weather.utils.Constants
 
 class SearchFragment : Fragment() {
 
@@ -37,12 +41,12 @@ class SearchFragment : Fragment() {
         setObservers()
     }
 
-
     private fun setup() {
         with(binding){
             rvSearch.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             rvSearch.adapter = adapter
             rvSearch.setHasFixedSize(true)
+            tiSearch.showKeyboard()
         }
     }
 
@@ -60,7 +64,11 @@ class SearchFragment : Fragment() {
     private fun setObservers() {
         viewModel.state.observe(viewLifecycleOwner) { state ->
             binding.progress.visible = state.loading
-            state.places?.let (adapter::submitList )
+            //state.places?.let (adapter::submitList )
+            state.places?.let {
+                adapter.submitList(it)
+                if (it.isNotEmpty()) hideKeyboard()
+            }
             state.navigateTo?.let {
                 navigateTo(it)
             }
@@ -68,10 +76,10 @@ class SearchFragment : Fragment() {
     }
 
     private fun navigateTo(element: GeocodingElement) {
-        val action = SearchFragmentDirections.actionSearchFragmentToLocationsFragment(element)
-        findNavController().navigate(action)
-
-        findNavController().previousBackStackEntry?.savedStateHandle?.set("key", element)
+        findNavController().previousBackStackEntry?.savedStateHandle?.set(
+            Constants.SEARCH_RESULT_KEY,
+            element
+        )
         findNavController().popBackStack()
     }
 

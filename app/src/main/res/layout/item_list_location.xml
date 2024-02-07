@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/common_padding_default"
-    android:layout_marginTop="@dimen/common_padding_default"
-    app:strokeColor="@color/white"
+    android:layout_marginVertical="@dimen/common_padding_min"
+    app:strokeColor="@color/bali_Hai"
+    app:cardBackgroundColor="@color/bg_item"
     app:strokeWidth="@dimen/info_stroke_width"
+    app:cardElevation="@dimen/card_item_elevation"
     app:cardCornerRadius="@dimen/info_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,40 +17,75 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/common_padding_min">
 
-        <TextView
-            android:id="@+id/tvCity"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/llCity"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="New York"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="New York sdfsdf sdfsfs sdsf"
+                android:maxLines="2"
+                android:textStyle="bold"
+                android:textSize="@dimen/item_list_text"/>
+            <TextView
+                android:id="@+id/tvCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                tools:text="New York, United States, US"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvCountry"
+        <LinearLayout
+            android:id="@+id/llTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="New York, United States, US"
-            app:layout_constraintStart_toStartOf="@id/tvCity"
-            app:layout_constraintTop_toBottomOf="@id/tvCity"/>
-
-
-        <TextView
-            android:id="@+id/tvTemperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="25°"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="25°"
+                android:textStyle="bold"
+                android:textSize="@dimen/item_list_text"/>
+            <TextView
+                android:id="@+id/tvTempMaxMin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="26°/24°"/>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tvTempMaxMin"
+            android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="26°/7°"
-            app:layout_constraintEnd_toEndOf="@id/tvTemperature"
-            app:layout_constraintTop_toBottomOf="@id/tvTemperature"/>
+            tools:text="light intensity drizzle rain"
+            app:layout_constraintTop_toBottomOf="@id/llTemp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/item_place_icon_size"
+            android:layout_height="@dimen/item_place_icon_size"
+            android:layout_marginHorizontal="@dimen/common_padding_min"
+            app:layout_constraintEnd_toStartOf="@id/llTemp"
+            app:layout_constraintTop_toTopOf="@id/llTemp"
+            app:layout_constraintBottom_toBottomOf="@id/llTemp"
+            tools:srcCompat="@drawable/ic_cloud" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

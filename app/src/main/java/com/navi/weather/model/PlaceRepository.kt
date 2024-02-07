@@ -21,9 +21,10 @@ class PlaceRepository {
             element.country,
             element.state,
             weatherResult.weather[0].icon,
+            weatherResult.weather[0].description,
             weatherResult.main.temp,
-            weatherResult.main.tempMax,
-            weatherResult.main.tempMin)
+            weatherResult.main.temp_max,
+            weatherResult.main.temp_min)
     }
 
 }

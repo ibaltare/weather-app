@@ -20,8 +20,8 @@ data class Clouds (
 data class MainWeather (
     val temp: Double,
     val feelsLike: Double,
-    val tempMin: Double,
-    val tempMax: Double,
+    val temp_min: Double,
+    val temp_max: Double,
     val pressure: Long,
     val humidity: Long,
 )

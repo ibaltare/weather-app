@@ -12,4 +12,7 @@ object Constants {
     const val CITY_PARAM = "q"
     const val LIMIT_PARAM = "limit"
     const val LIMIT_VALUE = 20
+    const val SEARCH_RESULT_KEY = "search_result_key"
+    const val ICON_URL = "http://openweathermap.org/img/wn/"
+    const val ICON_EXTENSION = "@2x.png"
 }
