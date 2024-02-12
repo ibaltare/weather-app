@@ -8,14 +8,16 @@ import com.navi.weather.model.GeocodingElement
 import com.navi.weather.model.GeocodingResult
 import com.navi.weather.model.SearchRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SearchViewModel : ViewModel() {
 
     private val repository: SearchRepository = SearchRepository()
-    private val _state = MutableLiveData(UiState())
-    val state: LiveData<UiState>
+    private val _state = MutableStateFlow(UiState())
+    val state: StateFlow<UiState>
         get() = _state
 
     fun getSearchResult(city: String){
@@ -29,7 +31,7 @@ class SearchViewModel : ViewModel() {
     }
 
     fun onElementClicked(element: GeocodingElement){
-        _state.value = _state.value?.copy(navigateTo = element)
+        _state.value = _state.value.copy(navigateTo = element)
     }
 
     data class UiState(

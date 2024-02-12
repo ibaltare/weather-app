@@ -10,17 +10,19 @@ import androidx.lifecycle.viewModelScope
 import com.navi.weather.domain.WeatherForecast
 import com.navi.weather.model.LocationRepository
 import com.navi.weather.model.WeatherRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val weatherRepository: WeatherRepository,
                     private val locationRepository: LocationRepository) : ViewModel() {
 
-    private val _state = MutableLiveData(UiState())
-    val state: LiveData<UiState> get() {
-        if(_state.value?.weatherForecast == null){
-            refresh()
-        }
-        return _state
+    private val _state = MutableStateFlow(UiState())
+    val state: StateFlow<UiState> = _state.asStateFlow()
+
+    init {
+        refresh()
     }
 
     private fun refresh(){

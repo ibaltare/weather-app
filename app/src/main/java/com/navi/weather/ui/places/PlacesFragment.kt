@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +18,8 @@ import com.navi.weather.databinding.FragmentPlacesBinding
 import com.navi.weather.model.GeocodingElement
 import com.navi.weather.ui.common.visible
 import com.navi.weather.utils.Constants
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class PlacesFragment : Fragment() {
 
@@ -62,12 +67,16 @@ class PlacesFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.state.observe(viewLifecycleOwner) { state ->
-            binding.progress.visible = state.loading
-            //state.places?.let (adapter::submitList )
-            state.places.apply {
-                adapter.submitList(this)
-                adapter.notifyDataSetChanged()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { state ->
+                    binding.progress.visible = state.loading
+                    //state.places?.let (adapter::submitList )
+                    state.places.apply {
+                        adapter.submitList(this)
+                        adapter.notifyDataSetChanged()
+                    }
+                }
             }
         }
 

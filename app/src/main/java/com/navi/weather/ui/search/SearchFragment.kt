@@ -10,6 +10,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.navi.weather.databinding.FragmentSearchBinding
@@ -18,6 +21,7 @@ import com.navi.weather.ui.common.hideKeyboard
 import com.navi.weather.ui.common.showKeyboard
 import com.navi.weather.ui.common.visible
 import com.navi.weather.utils.Constants
+import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment() {
 
@@ -62,15 +66,19 @@ class SearchFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.state.observe(viewLifecycleOwner) { state ->
-            binding.progress.visible = state.loading
-            //state.places?.let (adapter::submitList )
-            state.places?.let {
-                adapter.submitList(it)
-                if (it.isNotEmpty()) hideKeyboard()
-            }
-            state.navigateTo?.let {
-                navigateTo(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { state ->
+                    binding.progress.visible = state.loading
+                    //state.places?.let (adapter::submitList )
+                    state.places?.let {
+                        adapter.submitList(it)
+                        if (it.isNotEmpty()) hideKeyboard()
+                    }
+                    state.navigateTo?.let {
+                        navigateTo(it)
+                    }
+                }
             }
         }
     }

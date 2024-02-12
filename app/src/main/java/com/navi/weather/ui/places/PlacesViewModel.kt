@@ -8,24 +8,26 @@ import com.navi.weather.domain.CityWeather
 import com.navi.weather.model.GeocodingElement
 import com.navi.weather.model.PlaceRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PlacesViewModel : ViewModel() {
 
     private val repository = PlaceRepository()
-    private val _state = MutableLiveData(UiState())
-    val state: LiveData<UiState>
-        get() = _state
+    private val _state = MutableStateFlow(UiState())
+    val state: StateFlow<UiState> = _state.asStateFlow()
 
     fun addPlace(place: GeocodingElement) {
         viewModelScope.launch {
-            _state.value = _state.value?.copy(loading = true)
+            _state.value = _state.value.copy(loading = true)
             val response = withContext(Dispatchers.IO){
                 repository.getWeatherForecastFromPlace(place)
             }
             _state.value?.places?.add(response)
-            _state.value = state.value?.copy(loading = false)
+            _state.value = state.value.copy(loading = false)
         }
     }
 
