@@ -28,10 +28,6 @@ class PlaceAdapter:
         holder.bind(element)
     }
 
-    fun remove(position: Int) {
-        TODO("Not yet implemented")
-    }
-
     class PlaceViewHolder(private val binding: ItemListLocationBinding):
         RecyclerView.ViewHolder(binding.root) {
 

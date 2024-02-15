@@ -1,5 +1,6 @@
 package com.navi.weather.ui.places
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,14 +27,15 @@ class PlacesViewModel : ViewModel() {
             val response = withContext(Dispatchers.IO){
                 repository.getWeatherForecastFromPlace(place)
             }
-            _state.value?.places?.add(response)
-            _state.value = state.value.copy(loading = false)
+            _state.value.places.add(response)
+            _state.value = _state.value.copy(loading = false)
         }
     }
 
     fun removePlace(position: Int) {
-        _state.value?.places?.removeAt(position)
-        _state.value = state.value
+        _state.value = _state.value.copy(loading = true)
+        _state.value.places.removeAt(position)
+        _state.value = _state.value.copy(loading = false)
     }
 
     data class UiState(

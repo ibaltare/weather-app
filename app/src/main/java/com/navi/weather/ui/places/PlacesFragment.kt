@@ -18,7 +18,6 @@ import com.navi.weather.databinding.FragmentPlacesBinding
 import com.navi.weather.model.GeocodingElement
 import com.navi.weather.ui.common.visible
 import com.navi.weather.utils.Constants
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class PlacesFragment : Fragment() {
